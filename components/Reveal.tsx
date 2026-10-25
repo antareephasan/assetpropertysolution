@@ -1,0 +1,54 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+/**
+ * Light scroll-reveal wrapper: children fade/rise in the first time
+ * they scroll into view. Pure CSS transition, no animation library.
+ */
+export default function Reveal({
+  children,
+  delay = 0,
+  className = '',
+}: {
+  children: React.ReactNode;
+  /** Stagger delay in ms (e.g. index * 80) */
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    // Very old browsers: just show the content.
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('reveal-visible');
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('reveal-visible');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${className}`}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
+      {children}
+    </div>
+  );
+}

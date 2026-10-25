@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0e0e11;
+  color: #e4e4e7;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+}
+
+/* Subtle geometric grid overlay used in hero / CTA sections */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(120deg, #f3e19a 0%, #d4af37 45%, #a9832a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin gold rule under section titles */
+.gold-rule::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, #d4af37, rgba(212, 175, 55, 0));
+}
+
+/* Subtle ambient gold glow */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+.glow-pulse {
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+/* ============ Light animations ============ */
+
+/* On-load entrance (heroes) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+/* Scroll-triggered reveal (toggled by components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle lift for cards on hover */
+.lift {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 300ms;
+}
+.lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .fade-up {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .lift,
+  .lift:hover {
+    transform: none;
+  }
+  .glow-pulse {
+    animation: none;
+  }
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #ffffff;
+}
