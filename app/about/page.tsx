@@ -100,8 +100,8 @@ export default function AboutPage() {
               <Image
                 src="/images/house.jpg"
                 alt="Suburban property maintained by ASSET PROPERTY SOLUTION field crews"
-                width={728}
-                height={502}
+                width={1200}
+                height={800}
                 sizes="(min-width: 1024px) 560px, 100vw"
                 className="relative rounded-lg border border-line object-cover"
               />
