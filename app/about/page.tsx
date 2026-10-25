@@ -70,7 +70,7 @@ export default function AboutPage() {
             />
             <div className="mt-8 space-y-5 text-sm leading-relaxed text-body/80 sm:text-base">
               <p>
-                ASSET PROPERTY SOLUTION LLC was founded on a simple observation: vacant and
+                ASSET PROPERTY SOLUTION LLC was founded in 2024 on a simple observation: vacant and
                 distressed properties lose value quickly, and owners frequently find out too
                 late. We exist to close that gap — providing banks, lenders, realtors,
                 investors and property managers with a disciplined, photographic record of

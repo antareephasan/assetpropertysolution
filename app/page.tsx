@@ -3,11 +3,11 @@ import Image from 'next/image';
 import {
   ArrowRight,
   BadgeCheck,
+  Calendar,
   Camera,
   ClipboardCheck,
   ClipboardList,
   Hammer,
-  Home,
   Leaf,
   LockKeyhole,
   Send,
@@ -21,7 +21,7 @@ import CTABanner from '@/components/CTABanner';
 import Reveal from '@/components/Reveal';
 
 const stats = [
-  { icon: Home, title: 'Professional Field Services', sub: 'Residential & commercial assets' },
+  { icon: Calendar, title: 'In Business Since 2024', sub: 'Founded in Los Angeles, CA' },
   { icon: BadgeCheck, title: '24–48h Average Turnaround', sub: 'From work order to completion' },
   { icon: Camera, title: '100% Photo-Documented', sub: 'Every visit, fully reported' },
   { icon: ShieldCheck, title: 'Licensed, Insured & Bonded', sub: 'Full compliance coverage' },
