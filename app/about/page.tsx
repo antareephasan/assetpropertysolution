@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'ASSET PROPERTY SOLUTION LLC protects real estate assets for banks, lenders, realtors, investors and property managers from Los Angeles and nationwide.',
+  alternates: { canonical: '/about/' },
 };
 
 const values = [

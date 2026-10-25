@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Request a quote or submit a work order to ASSET PROPERTY SOLUTION LLC — email info@assetproperty.net, based in Los Angeles, CA.',
+  alternates: { canonical: '/contact/' },
 };
 
 const infoCards = [

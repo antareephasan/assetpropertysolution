@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Vendor Network',
   description:
     'Join the ASSET PROPERTY SOLUTION LLC vendor network — apply as a field contractor for inspections, securing, trash-outs, lawn care and rehab work.',
+  alternates: { canonical: '/vendor/' },
 };
 
 const benefits = [

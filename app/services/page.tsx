@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'Comprehensive property preservation, inspection, securing, clean-out, winterization, lawn care, repairs and code compliance services.',
+  alternates: { canonical: '/services/' },
 };
 
 const services = [
