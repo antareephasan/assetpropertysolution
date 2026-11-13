@@ -129,7 +129,7 @@ export default function Navbar() {
       >
         <div
           className={`container-edge flex items-center justify-between transition-[height] duration-500 ${
-            scrolled ? 'h-[68px]' : 'h-[82px] lg:h-[92px]'
+            scrolled ? 'h-[72px] lg:h-[88px]' : 'h-20 lg:h-24'
           }`}
         >
           <Logo />

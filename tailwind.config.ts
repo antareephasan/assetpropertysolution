@@ -9,21 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Cool architectural charcoal / deep slate, drawn from the metallic
+        // mark. Primary text, structural borders and dark card fields.
         ink: {
-          DEFAULT: '#13140F',
-          soft: '#1C1D16',
+          DEFAULT: '#15191D',
+          soft: '#21272D',
         },
+        // Crisp cool off-white base with a stone-tinted band for alternates.
         paper: {
-          DEFAULT: '#F2EFE6',
-          deep: '#E8E2D3',
+          DEFAULT: '#F3F4F5',
+          deep: '#E5E8EA',
         },
-        stone: '#D7D1C1',
+        stone: '#C9CED2',
+        // Retained warm metallic accent: the only non-neutral in the system.
         brass: {
           DEFAULT: '#9C7A45',
           light: '#C2A374',
           dark: '#6E552F',
         },
-        muted: '#6B6759',
+        muted: '#5C666D',
         rust: '#8E3B2C',
       },
       fontFamily: {

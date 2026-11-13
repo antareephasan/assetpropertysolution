@@ -6,8 +6,8 @@
 
 :root {
   color-scheme: light;
-  --paper: #f2efe6;
-  --ink: #13140f;
+  --paper: #f3f4f5;
+  --ink: #15191d;
   --brass: #9c7a45;
 }
 
@@ -39,8 +39,8 @@ body::after {
 }
 
 ::selection {
-  background: #13140f;
-  color: #f2efe6;
+  background: #15191d;
+  color: #f3f4f5;
 }
 
 :focus-visible {
@@ -122,45 +122,45 @@ body::after {
   }
 
   .btn-ink {
-    background-color: #13140f;
-    color: #f2efe6;
+    background-color: #15191d;
+    color: #f3f4f5;
   }
 
   .btn-ink:hover {
     background-color: #9c7a45;
-    color: #13140f;
+    color: #15191d;
   }
 
   .btn-outline {
-    border-color: rgba(19, 20, 15, 0.25);
-    color: #13140f;
+    border-color: rgba(21, 25, 29, 0.25);
+    color: #15191d;
   }
 
   .btn-outline:hover {
-    background-color: #13140f;
-    color: #f2efe6;
-    border-color: #13140f;
+    background-color: #15191d;
+    color: #f3f4f5;
+    border-color: #15191d;
   }
 
   .btn-paper {
-    background-color: #f2efe6;
-    color: #13140f;
+    background-color: #f3f4f5;
+    color: #15191d;
   }
 
   .btn-paper:hover {
     background-color: #9c7a45;
-    color: #13140f;
+    color: #15191d;
   }
 
   .btn-ghost-light {
-    border-color: rgba(242, 239, 230, 0.3);
-    color: #f2efe6;
+    border-color: rgba(243, 244, 245, 0.3);
+    color: #f3f4f5;
   }
 
   .btn-ghost-light:hover {
-    background-color: #f2efe6;
-    color: #13140f;
-    border-color: #f2efe6;
+    background-color: #f3f4f5;
+    color: #15191d;
+    border-color: #f3f4f5;
   }
 
   .link-underline {
@@ -186,24 +186,24 @@ body::after {
     font-size: 0.5625rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #6b6759;
+    color: #5c666d;
   }
 
   .field-input {
     width: 100%;
     border: 0;
-    border-bottom: 1px solid rgba(19, 20, 15, 0.2);
+    border-bottom: 1px solid rgba(21, 25, 29, 0.2);
     background: transparent;
     padding: 0.7rem 0;
     font-size: 0.9375rem;
-    color: #13140f;
+    color: #15191d;
     outline: none;
     border-radius: 0;
     transition: border-color 0.3s ease;
   }
 
   .field-input::placeholder {
-    color: rgba(19, 20, 15, 0.3);
+    color: rgba(21, 25, 29, 0.3);
   }
 
   .field-input:focus {
@@ -228,7 +228,7 @@ body::after {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    border-top: 1px solid rgba(19, 20, 15, 0.16);
+    border-top: 1px solid rgba(21, 25, 29, 0.16);
     padding-top: 0.9rem;
   }
 
@@ -236,7 +236,7 @@ body::after {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    border-top: 1px solid rgba(242, 239, 230, 0.18);
+    border-top: 1px solid rgba(243, 244, 245, 0.18);
     padding-top: 0.9rem;
   }
 }
