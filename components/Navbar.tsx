@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
-import Logo from '@/components/Logo';
-import { gsap, prefersReducedMotion } from '@/lib/gsap';
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 const primaryLinks = [
-  { href: '/projects', label: 'Field Files', index: '01' },
-  { href: '/services', label: 'Services', index: '02' },
-  { href: '/about', label: 'About', index: '03' },
-  { href: '/vendor', label: 'Vendor Network', index: '04' },
-  { href: '/contact', label: 'Contact', index: '05' },
+  { href: "/projects", label: "Field Files", index: "01" },
+  { href: "/services", label: "Services", index: "02" },
+  { href: "/about", label: "About", index: "03" },
+  { href: "/vendor", label: "Vendor Network", index: "04" },
+  { href: "/contact", label: "Contact", index: "05" },
 ];
 
 const menuLinks = [
-  { href: '/projects', label: 'Field Files', index: '01' },
-  { href: '/services', label: 'Services', index: '02' },
-  { href: '/about', label: 'About the firm', index: '03' },
-  { href: '/vendor', label: 'Vendor Network', index: '04' },
-  { href: '/apply', label: 'Vendor Application', index: '05' },
-  { href: '/contact', label: 'Contact', index: '06' },
+  { href: "/projects", label: "Field Files", index: "01" },
+  { href: "/services", label: "Services", index: "02" },
+  { href: "/about", label: "About the firm", index: "03" },
+  { href: "/vendor", label: "Vendor Network", index: "04" },
+  { href: "/apply", label: "Vendor Application", index: "05" },
+  { href: "/contact", label: "Contact", index: "06" },
 ];
 
 export default function Navbar() {
@@ -31,13 +31,13 @@ export default function Navbar() {
   const hasOpened = useRef(false);
   const pathname = usePathname();
   // Static export runs with trailing slashes; normalise so active states match.
-  const path = pathname.replace(/\/+$/, '') || '/';
+  const path = pathname.replace(/\/+$/, "") || "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -48,23 +48,23 @@ export default function Navbar() {
     const overlay = overlayRef.current;
     if (!overlay) return;
 
-    const items = overlay.querySelectorAll('[data-menu-item]');
+    const items = overlay.querySelectorAll("[data-menu-item]");
     const reduced = prefersReducedMotion();
 
     if (open) {
       hasOpened.current = true;
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
 
       if (reduced) {
-        gsap.set(overlay, { display: 'block', clipPath: 'inset(0 0 0% 0)' });
+        gsap.set(overlay, { display: "block", clipPath: "inset(0 0 0% 0)" });
         gsap.set(items, { autoAlpha: 1, yPercent: 0 });
       } else {
         gsap.killTweensOf([overlay, items]);
-        gsap.set(overlay, { display: 'block' });
+        gsap.set(overlay, { display: "block" });
         gsap.fromTo(
           overlay,
-          { clipPath: 'inset(0 0 100% 0)' },
-          { clipPath: 'inset(0 0 0% 0)', duration: 0.75, ease: 'expo.inOut' }
+          { clipPath: "inset(0 0 100% 0)" },
+          { clipPath: "inset(0 0 0% 0)", duration: 0.75, ease: "expo.inOut" },
         );
         gsap.fromTo(
           items,
@@ -74,47 +74,52 @@ export default function Navbar() {
             autoAlpha: 1,
             duration: 0.9,
             stagger: 0.055,
-            ease: 'expo.out',
+            ease: "expo.out",
             delay: 0.28,
-          }
+          },
         );
       }
 
       const onKey = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') setOpen(false);
+        if (event.key === "Escape") setOpen(false);
       };
-      window.addEventListener('keydown', onKey);
+      window.addEventListener("keydown", onKey);
       return () => {
-        window.removeEventListener('keydown', onKey);
-        document.body.style.overflow = '';
+        window.removeEventListener("keydown", onKey);
+        document.body.style.overflow = "";
       };
     }
 
     if (!hasOpened.current) {
-      gsap.set(overlay, { display: 'none' });
+      gsap.set(overlay, { display: "none" });
       return;
     }
 
-    document.body.style.overflow = '';
+    document.body.style.overflow = "";
     if (reduced) {
-      gsap.set(overlay, { display: 'none' });
+      gsap.set(overlay, { display: "none" });
       return;
     }
 
     gsap.killTweensOf([overlay, items]);
-    gsap.to(items, { autoAlpha: 0, yPercent: -18, duration: 0.3, stagger: 0.02 });
+    gsap.to(items, {
+      autoAlpha: 0,
+      yPercent: -18,
+      duration: 0.3,
+      stagger: 0.02,
+    });
     gsap.to(overlay, {
-      clipPath: 'inset(0 0 100% 0)',
+      clipPath: "inset(0 0 100% 0)",
       duration: 0.65,
       delay: 0.12,
-      ease: 'expo.inOut',
-      onComplete: () => gsap.set(overlay, { display: 'none' }),
+      ease: "expo.inOut",
+      onComplete: () => gsap.set(overlay, { display: "none" }),
     });
   }, [open]);
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, []);
 
@@ -123,33 +128,37 @@ export default function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
           scrolled || open
-            ? 'border-b border-ink/10 bg-paper/90 backdrop-blur-md'
-            : 'border-b border-transparent bg-transparent'
+            ? "border-b border-ink/10 bg-paper/90 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
         }`}
       >
         <div
           className={`container-edge flex items-center justify-between transition-[height] duration-500 ${
-            scrolled ? 'h-[68px]' : 'h-[82px] lg:h-[92px]'
+            scrolled ? "h-[68px]" : "h-[82px] lg:h-[92px]"
           }`}
         >
           <Logo />
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-8 lg:flex"
+          >
             {primaryLinks.map((link) => {
-              const active = path === link.href || path.startsWith(`${link.href}/`);
+              const active =
+                path === link.href || path.startsWith(`${link.href}/`);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  aria-current={active ? 'page' : undefined}
+                  aria-current={active ? "page" : undefined}
                   className={`eyebrow group relative py-2 transition-colors ${
-                    active ? 'text-ink' : 'text-ink/60 hover:text-ink'
+                    active ? "text-ink" : "text-ink/60 hover:text-ink"
                   }`}
                 >
                   {link.label}
                   <span
                     className={`absolute -bottom-0.5 left-0 h-px bg-brass transition-[width] duration-500 ease-out-expo ${
-                      active ? 'w-full' : 'w-0 group-hover:w-full'
+                      active ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
                 </Link>
@@ -168,12 +177,12 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
-              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="site-menu"
               className="flex items-center gap-2.5 border border-ink/20 px-3.5 py-2.5 text-ink transition-colors hover:border-ink lg:hidden"
             >
-              <span className="eyebrow">{open ? 'Close' : 'Menu'}</span>
+              <span className="eyebrow">{open ? "Close" : "Menu"}</span>
               {open ? (
                 <X className="h-4 w-4" strokeWidth={1.5} />
               ) : (
@@ -217,7 +226,9 @@ export default function Navbar() {
                   data-menu-item
                   className="group flex items-baseline gap-4 border-b border-paper/15 py-4 sm:gap-6 sm:py-5"
                 >
-                  <span className="eyebrow w-6 shrink-0 text-brass-light/80">{link.index}</span>
+                  <span className="eyebrow w-6 shrink-0 text-brass-light/80">
+                    {link.index}
+                  </span>
                   <span className="display text-[clamp(1.9rem,5vw,3.6rem)] text-paper transition-colors duration-300 group-hover:text-brass-light">
                     {link.label}
                   </span>
@@ -238,8 +249,8 @@ export default function Navbar() {
                 info@assetproperty.net
               </a>
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-paper/50">
-                Work orders, quotes and vendor enquiries. One point of contact from intake
-                through close-out.
+                Work orders, quotes and vendor enquiries. One point of contact
+                from intake through close-out.
               </p>
 
               <div className="mt-8 space-y-2 border-t border-paper/15 pt-5 text-sm">
@@ -257,7 +268,10 @@ export default function Navbar() {
                 </p>
               </div>
 
-              <Link href="/apply" className="btn btn-paper mt-8 w-full justify-between">
+              <Link
+                href="/apply"
+                className="btn btn-paper mt-8 w-full justify-between"
+              >
                 Apply as a vendor
                 <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>

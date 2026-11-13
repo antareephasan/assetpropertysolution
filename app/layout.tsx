@@ -1,55 +1,55 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ScrollProgress from '@/components/motion/ScrollProgress';
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/motion/ScrollProgress";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://assetpropertysolution.net'),
+  metadataBase: new URL("https://assetpropertysolution.net"),
   title: {
-    default: 'Asset Property Solution LLC — Property Preservation, Los Angeles',
-    template: '%s | Asset Property Solution LLC',
+    default: "Asset Property Solution LLC — Property Preservation, Los Angeles",
+    template: "%s | Asset Property Solution LLC",
   },
   description:
-    'Property preservation and field services for lenders, servicers, investors and property managers. Inspections, securing, clean-outs, grounds and repairs — photo-documented, with 24–48h dispatch from Los Angeles.',
+    "Property preservation and field services for lenders, servicers, investors and property managers. Inspections, securing, clean-outs, grounds and repairs — photo-documented, with 24–48h dispatch from Los Angeles.",
   keywords: [
-    'property preservation',
-    'field services',
-    'property inspections',
-    'REO services',
-    'mortgage inspections',
-    'Los Angeles',
+    "property preservation",
+    "field services",
+    "property inspections",
+    "REO services",
+    "mortgage inspections",
+    "Los Angeles",
   ],
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://assetpropertysolution.net',
-    siteName: 'Asset Property Solution LLC',
-    title: 'Asset Property Solution LLC — Property Preservation, Los Angeles',
+    type: "website",
+    locale: "en_US",
+    url: "https://assetpropertysolution.net",
+    siteName: "Asset Property Solution LLC",
+    title: "Asset Property Solution LLC — Property Preservation, Los Angeles",
     description:
-      'Property preservation and field services for banks, lenders, realtors, investors and property managers. Photo-documented reporting with 24–48h dispatch, nationwide coverage.',
+      "Property preservation and field services for banks, lenders, realtors, investors and property managers. Photo-documented reporting with 24–48h dispatch, nationwide coverage.",
     images: [
       {
-        url: '/images/hero-sunset.jpg',
+        url: "/images/hero-sunset.jpg",
         width: 1920,
         height: 1309,
-        alt: 'Craftsman home with lit windows at dusk',
+        alt: "Craftsman home with lit windows at dusk",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Asset Property Solution LLC — Property Preservation, Los Angeles',
+    card: "summary_large_image",
+    title: "Asset Property Solution LLC — Property Preservation, Los Angeles",
     description:
-      'Field services for lenders, investors and property managers. Inspected, secured and documented — with 24–48h dispatch.',
-    images: ['/images/hero-sunset.jpg'],
+      "Field services for lenders, investors and property managers. Inspected, secured and documented — with 24–48h dispatch.",
+    images: ["/images/hero-sunset.jpg"],
   },
   icons: {
-    icon: '/images/logo.jpeg',
-    apple: '/images/logo.jpeg',
+    icon: "/images/logo.jpeg",
+    apple: "/images/logo.jpeg",
   },
   robots: {
     index: true,
@@ -58,26 +58,26 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://assetpropertysolution.net/#organization',
-  name: 'Asset Property Solution LLC',
-  url: 'https://assetpropertysolution.net',
-  logo: 'https://assetpropertysolution.net/images/logo.jpeg',
-  image: 'https://assetpropertysolution.net/images/hero-sunset.jpg',
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://assetpropertysolution.net/#organization",
+  name: "Asset Property Solution LLC",
+  url: "https://assetpropertysolution.net",
+  logo: "https://assetpropertysolution.net/images/logo.jpeg",
+  image: "https://assetpropertysolution.net/images/hero-sunset.jpg",
   description:
-    'Property preservation and field services company providing inspections, securing and lock changes, debris clean-outs, lawn care, winterization and repairs with photo-documented reporting.',
-  foundingDate: '2024',
-  email: 'info@assetproperty.net',
+    "Property preservation and field services company providing inspections, securing and lock changes, debris clean-outs, lawn care, winterization and repairs with photo-documented reporting.",
+  foundingDate: "2024",
+  email: "info@assetproperty.net",
   address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Los Angeles',
-    addressRegion: 'CA',
-    addressCountry: 'US',
+    "@type": "PostalAddress",
+    addressLocality: "Los Angeles",
+    addressRegion: "CA",
+    addressCountry: "US",
   },
   areaServed: [
-    { '@type': 'City', name: 'Los Angeles, CA' },
-    { '@type': 'Country', name: 'United States' },
+    { "@type": "City", name: "Los Angeles, CA" },
+    { "@type": "Country", name: "United States" },
   ],
 };
 
