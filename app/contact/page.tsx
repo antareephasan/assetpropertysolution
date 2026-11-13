@@ -1,136 +1,157 @@
 import type { Metadata } from 'next';
-import { Clock, Mail, MapPin, PhoneCall, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
 import Reveal from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Request a quote or submit a work order to ASSET PROPERTY SOLUTION LLC — email info@assetproperty.net, based in Los Angeles, CA.',
+    'Request a quote or submit a work order to ASSET PROPERTY SOLUTION LLC — info@assetproperty.net, based in Los Angeles, CA with nationwide dispatch.',
   alternates: { canonical: '/contact/' },
 };
 
-const infoCards = [
+const contactDetails = [
   {
-    icon: Mail,
-    title: 'Email Us',
+    label: 'Email',
     value: 'info@assetproperty.net',
     href: 'mailto:info@assetproperty.net',
-    sub: 'Work orders, quotes & vendor applications',
+    note: 'Work orders, quotes and vendor enquiries.',
   },
   {
-    icon: MapPin,
-    title: 'Location',
-    value: 'Los Angeles, CA',
-    sub: 'Serving all of Southern California, dispatching nationwide',
+    label: 'Base',
+    value: 'Los Angeles, California',
+    note: 'Own crews across Southern California; nationwide network dispatch.',
   },
   {
-    icon: Clock,
-    title: 'Turnaround',
-    value: '24–48 Hours',
-    sub: 'Crews dispatched on most work orders within two business days',
+    label: 'Response',
+    value: 'Within one business day',
+    note: 'Dispatch confirmed at 24–48 hours on most orders.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Compliance',
-    value: 'Licensed, Insured & Bonded',
-    sub: 'Certificates of insurance available upon request',
+    label: 'Compliance',
+    value: 'Licensed, insured & bonded',
+    note: 'Certificates of insurance available on request.',
   },
 ];
 
 export default function ContactPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="grid-overlay absolute inset-0" aria-hidden />
-        <div
-          aria-hidden
-          className="glow-pulse absolute -top-24 left-1/2 h-72 w-[32rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
-          <p className="fade-up text-xs font-semibold tracking-[0.3em] text-gold uppercase">
-            Contact Us
-          </p>
-          <h1
-            className="fade-up font-display mx-auto mt-5 max-w-3xl text-4xl font-bold text-white sm:text-5xl"
-            style={{ animationDelay: '120ms' }}
-          >
-            Let’s Get Your <span className="text-gold-gradient">Property Handled</span>
-          </h1>
-          <p
-            className="fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-body/80"
-            style={{ animationDelay: '240ms' }}
-          >
-            Request a quote, send a work order, or ask a question. Every submission is
-            answered by a real person — usually the same business day.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        index="06"
+        label="Contact"
+        titleLines={[
+          'Tell us about',
+          <>
+            the <span className="italic text-brass">asset</span>.
+          </>,
+        ]}
+        description="Send the address, the requirement and any client guidelines. Every enquiry is answered by a person, usually the same business day."
+        meta={[
+          { label: 'Email', value: 'info@assetproperty.net' },
+          { label: 'Dispatch', value: '24–48 hours' },
+          { label: 'Coverage', value: 'Nationwide' },
+        ]}
+      />
 
-      {/* Info cards */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {infoCards.map(({ icon: Icon, title, value, href, sub }, i) => {
-            const content = (
-              <>
-                <span className="flex h-11 w-11 items-center justify-center rounded-md border border-gold/30 bg-gold/10">
-                  <Icon className="h-5 w-5 text-gold" />
-                </span>
-                <p className="mt-5 text-xs font-semibold tracking-[0.2em] text-body/60 uppercase">
-                  {title}
-                </p>
-                <p className="mt-1.5 text-sm font-semibold text-white">{value}</p>
-                <p className="mt-2 text-xs leading-relaxed text-body/60">{sub}</p>
-              </>
-            );
-            return href ? (
-              <Reveal key={title} delay={i * 80}>
+      <section className="container-edge pb-20 lg:pb-28">
+        <div className="grid gap-12 border-t border-ink/15 pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-12">
+          <aside className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <Reveal>
+                <p className="eyebrow text-muted">Direct line</p>
                 <a
-                  href={href}
-                  className="lift block h-full rounded-lg border border-line bg-surface p-7 transition-all duration-300 hover:border-gold/40 hover:shadow-glow"
+                  href="mailto:info@assetproperty.net"
+                  className="display mt-4 block break-words text-[clamp(1.7rem,2.6vw,2.3rem)] text-ink hover:text-brass"
                 >
-                  {content}
+                  info@assetproperty.net
                 </a>
               </Reveal>
-            ) : (
-              <Reveal key={title} delay={i * 80}>
-                <div className="lift h-full rounded-lg border border-line bg-surface p-7">
-                  {content}
+
+              <dl className="mt-10">
+                {contactDetails.map((detail, i) => (
+                  <Reveal key={detail.label} delay={i * 0.05}>
+                    <div className="border-t border-ink/15 py-4">
+                      <dt className="eyebrow text-muted">{detail.label}</dt>
+                      <dd className="mt-2 text-[15px] text-ink">
+                        {detail.href ? (
+                          <a href={detail.href} className="link-underline">
+                            {detail.value}
+                          </a>
+                        ) : (
+                          detail.value
+                        )}
+                      </dd>
+                      <dd className="mt-1.5 text-[11px] leading-relaxed text-muted">
+                        {detail.note}
+                      </dd>
+                    </div>
+                  </Reveal>
+                ))}
+              </dl>
+
+              <Reveal delay={0.2}>
+                <div className="mt-6 border-t border-ink/15 pt-5">
+                  <p className="eyebrow text-muted">For vendors</p>
+                  <p className="mt-3 text-[12px] leading-relaxed text-muted">
+                    Applications go through the vendor network, not the work order inbox.
+                  </p>
+                  <Link
+                    href="/apply"
+                    className="link-underline mt-4 inline-flex items-center gap-1.5 text-[13px] text-ink"
+                  >
+                    Apply to the network
+                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+                  </Link>
                 </div>
               </Reveal>
-            );
-          })}
-        </div>
-      </section>
+            </div>
+          </aside>
 
-      {/* Form */}
-      <section className="mx-auto max-w-4xl px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-            Request a Quote or Send a Work Order
-          </h2>
-          <p className="mt-3 text-sm text-body/70">
-            Fields marked * are required. Include the property address and expected timeline
-            for the fastest response.
-          </p>
+          <div className="lg:col-span-8">
+            <Reveal>
+              <div className="flex items-end justify-between gap-6 border-b border-ink/15 pb-5">
+                <div>
+                  <p className="eyebrow text-brass">01 / Enquiry</p>
+                  <h2 className="display mt-3 text-[clamp(1.9rem,3.4vw,2.8rem)] text-ink">
+                    Request a quote or work order
+                  </h2>
+                </div>
+                <p className="eyebrow hidden text-muted sm:block">* REQUIRED</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <ContactForm />
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="mt-12 grid gap-6 border-t border-ink/15 pt-6 sm:grid-cols-3">
+                <div>
+                  <p className="eyebrow text-brass">Access</p>
+                  <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                    Include lockbox codes or access instructions in your follow-up email, not
+                    in this form.
+                  </p>
+                </div>
+                <div>
+                  <p className="eyebrow text-brass">Scope</p>
+                  <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                    Photos of the property help us price accurately on the first visit.
+                  </p>
+                </div>
+                <div>
+                  <p className="eyebrow text-brass">Documentation</p>
+                  <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                    Photo sets and line-item invoices are delivered at close-out as standard.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
-        <Reveal>
-          <ContactForm />
-        </Reveal>
-        <Reveal>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 rounded-lg border border-line bg-surface/50 px-6 py-6 text-center sm:flex-row sm:text-left">
-          <PhoneCall className="h-5 w-5 text-gold" />
-          <p className="text-sm text-body/75">
-            Prefer direct dispatch? Email{' '}
-            <a href="mailto:info@assetproperty.net" className="font-semibold text-gold">
-              info@assetproperty.net
-            </a>{' '}
-            with the property address and scope — our coordinator will confirm the crew
-            assignment            within 24–48 hours.
-          </p>
-        </div>
-        </Reveal>
       </section>
     </>
   );

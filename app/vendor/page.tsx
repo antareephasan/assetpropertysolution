@@ -1,153 +1,273 @@
 import type { Metadata } from 'next';
-import { Check, ClipboardList, DollarSign, MapPinned, Network, Wallet } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
-import CTABanner from '@/components/CTABanner';
-import VendorApplicationForm from '@/components/VendorApplicationForm';
 import Reveal from '@/components/Reveal';
+import ParallaxImage from '@/components/motion/ParallaxImage';
 
 export const metadata: Metadata = {
   title: 'Vendor Network',
   description:
-    'Join the ASSET PROPERTY SOLUTION LLC vendor network — apply as a field contractor for inspections, securing, trash-outs, lawn care and rehab work.',
+    'Join the ASSET PROPERTY SOLUTION LLC vendor network — independent field contractors for inspections, securing, trash-outs, grounds, winterization and repairs.',
   alternates: { canonical: '/vendor/' },
 };
 
 const benefits = [
   {
-    icon: ClipboardList,
-    title: 'Consistent Work Orders',
-    text: 'Recurring assignments from lenders, servicers and asset managers — including after-hours and rush dispatch.',
+    title: 'Direct coordination',
+    text: 'One network manager who knows the order, the property and the client guideline. No ticket queue, no anonymous dispatch.',
   },
   {
-    icon: Wallet,
-    title: 'Fast, Predictable Pay',
-    text: 'Line-item pricing on approved scopes, with clear invoicing timelines and photo-debit support.',
+    title: 'Scope in writing',
+    text: 'Every assignment arrives with a defined scope, access notes and a documentation requirement. Changes are approved, not assumed.',
   },
   {
-    icon: Network,
-    title: 'National Network Support',
-    text: 'Back-office coordination,guideline references and escalation help whenever you are on-site.',
+    title: 'Steady field volume',
+    text: 'Recurring work from servicers, asset managers and investors across inspections, preservation and repair programs.',
   },
   {
-    icon: MapPinned,
-    title: 'Coverage Flexibility',
-    text: 'Serve your own territory — urban, suburban or rural — at the volume it fits your crew size.',
+    title: 'Clean invoicing',
+    text: 'Line-item invoicing matched to the approved scope, with photo documentation attached as part of the close-out.',
   },
 ];
 
-const requirements = [
-  'General liability insurance (GL certificate required)',
-  'Valid business license & W-9',
-  'Any trade licenses required in your state',
-  'Reliable truck/trailer and crew equipment',
-  'Smartphone for photo upload & completion bid',
-  'Ability to complete work orders within 24–48h',
+const baseline = [
+  'General liability insurance, current COI',
+  'Business licence and W-9',
+  'Trade licences required in your state',
+  'Reliable vehicle, trailer and equipment',
+  'Smartphone for indexed photo upload',
+  '24–48 hour completion standard',
+];
+
+const territories = [
+  'Los Angeles County',
+  'Southern California',
+  'Central & Northern California',
+  'Nevada',
+  'Arizona',
+  'Texas',
+  'Florida',
+  'Multi-state crews',
 ];
 
 export default function VendorPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="grid-overlay absolute inset-0" aria-hidden />
-        <div
-          aria-hidden
-          className="glow-pulse absolute -top-24 left-1/2 h-72 w-[32rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
-          <p className="fade-up text-xs font-semibold tracking-[0.3em] text-gold uppercase">
-            Vendor Network
-          </p>
-          <h1
-            className="fade-up font-display mx-auto mt-5 max-w-3xl text-4xl font-bold text-white sm:text-5xl"
-            style={{ animationDelay: '120ms' }}
-          >
-            Join Our Nationwide <span className="text-gold-gradient">Field Vendor Network</span>
-          </h1>
-          <p
-            className="fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-body/80"
-            style={{ animationDelay: '240ms' }}
-          >
-            ASSET PROPERTY SOLUTION LLC is actively recruiting licensed, insured field
-            contractors across the country. Complete the application below and our network
-            managers will begin onboarding your company.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        index="04"
+        label="Vendor network"
+        titleLines={[
+          'Crews, not',
+          <>
+            call <span className="italic text-brass">centres</span>.
+          </>,
+        ]}
+        description="ASSET PROPERTY SOLUTION works with independent field contractors who treat documentation as part of the job. If you hold your territory and close your orders, we will keep the file full."
+        meta={[
+          { label: 'Network', value: 'Nationwide' },
+          { label: 'Review', value: '5 business days' },
+          { label: 'Standard', value: 'Documented close-out' },
+        ]}
+      />
 
-      {/* Benefits & requirements */}
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Why Partner With Us"
-          title="Built for Contractors, Backed by Process"
-          description="We handle client communication, compliance paperwork and photo-debit disputes so crews can stay focused on completing orders."
-        />
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          {benefits.map(({ icon: Icon, title, text }, i) => (
-            <Reveal key={title} delay={(i % 2) * 100}>
-            <div
-              className="lift flex h-full gap-5 rounded-lg border border-line bg-surface p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-glow"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/10">
-                <Icon className="h-6 w-6 text-gold" />
-              </span>
-              <div>
-                <h3 className="font-display text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-body/75">{text}</p>
-              </div>
-            </div>
+      {/* ============ WHY PARTNER ============ */}
+      <section className="container-edge pb-20 lg:pb-28">
+        <div className="grid gap-12 border-t border-ink/15 pt-10 lg:grid-cols-12 lg:gap-10 lg:pt-12">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <p className="eyebrow text-muted">
+                <span className="text-brass">01</span>
+                <span className="mx-2 text-brass/60">/</span>
+                The partnership
+              </p>
+              <h2 className="display mt-5 max-w-lg text-[clamp(2rem,4.2vw,3.4rem)] text-ink">
+                A network built on
+                <br />
+                <span className="italic text-brass">follow-through.</span>
+              </h2>
             </Reveal>
-          ))}
-        </div>
 
-        {/* Requirements */}
-        <Reveal delay={100}>
-        <div className="mt-12 rounded-lg border border-gold/25 bg-gradient-to-b from-gold/5 to-transparent p-8 sm:p-10">
-          <h3 className="font-display text-xl font-semibold text-gold">
-            Vendor Onboarding Requirements
-          </h3>
-          <p className="mt-3 text-sm text-body/70">
-            Have these ready before applying — it lets our team approve your application in
-            days, not weeks.
-          </p>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {requirements.map((r) => (
-              <li key={r} className="flex items-start gap-2.5 text-sm text-body/80">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                {r}
-              </li>
-            ))}
-          </ul>
+            <div className="mt-10">
+              {benefits.map((benefit, i) => (
+                <Reveal key={benefit.title} delay={i * 0.06}>
+                  <div className="grid gap-3 border-t border-ink/15 py-6 sm:grid-cols-12 sm:gap-6">
+                    <span className="eyebrow text-brass sm:col-span-2">0{i + 1}</span>
+                    <h3 className="text-[15px] font-medium text-ink sm:col-span-4">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-[13px] leading-relaxed text-muted sm:col-span-6">
+                      {benefit.text}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+              <div className="border-b border-ink/15" />
+            </div>
+
+            <Reveal delay={0.1}>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link href="/apply" className="btn btn-ink">
+                  Apply to the network
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                </Link>
+                <p className="text-[12px] text-muted">Review within five business days.</p>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-5">
+            <Reveal delay={0.15}>
+              <ParallaxImage
+                src="/images/hero-office.jpg"
+                alt="Commercial property maintained by a field vendor crew"
+                className="aspect-[4/5] w-full"
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                objectPosition="center 55%"
+                strength={5}
+              />
+              <div className="mt-2 flex items-start justify-between gap-4">
+                <p className="eyebrow text-muted">Above — Perimeter program, Los Angeles</p>
+                <p className="eyebrow text-muted">FIELD FILE 03</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.22}>
+              <div className="mt-8 border-t border-ink/15 pt-5">
+                <p className="eyebrow text-muted">Out of scope</p>
+                <p className="mt-3 text-[12px] leading-relaxed text-muted">
+                  This is not a staffing agency or a job board. Applications are for established,
+                  insured businesses ready to accept field orders as independent contractors.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
-        </Reveal>
       </section>
 
-      {/* Application form */}
-      <section
-        id="apply"
-        className="border-y border-line bg-surface/50 scroll-mt-24"
-      >
-        <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-semibold tracking-[0.3em] text-gold uppercase">
-              Contractor Application
+      {/* ============ BASELINE ============ */}
+      <section className="border-y border-ink/15 bg-paper-deep/50">
+        <div className="container-edge py-20 lg:py-24">
+          <SectionHeading
+            index="02"
+            eyebrow="Baseline"
+            title="What we require."
+            description="The same standard applies to every trade and territory. Full requirements and the application are on the vendor application page."
+          />
+
+          <div className="mt-10 grid gap-x-10 border-t border-ink/15 sm:grid-cols-2 lg:grid-cols-3">
+            {baseline.map((item, i) => (
+              <Reveal key={item} delay={(i % 3) * 0.05}>
+                <div className="flex items-start gap-3 border-b border-ink/10 py-4 text-[13px] leading-relaxed text-ink/75">
+                  <span className="mt-0.5 font-mono text-[10px] text-brass">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {item}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <Link
+              href="/apply"
+              className="link-underline mt-8 inline-flex items-center gap-1.5 text-[13px] text-ink"
+            >
+              Full requirements, FAQ and application
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ TERRITORIES ============ */}
+      <section className="bg-ink py-20 text-paper lg:py-28">
+        <div className="container-edge grid gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <p className="eyebrow text-paper/45">
+                <span className="text-brass-light">03</span>
+                <span className="mx-2 text-brass/60">/</span>
+                Coverage
+              </p>
+              <h2 className="display mt-6 text-[clamp(2.1rem,4.2vw,3.6rem)] text-paper">
+                Where we
+                <br />
+                need crews.
+              </h2>
+              <p className="mt-6 max-w-sm text-sm leading-relaxed text-paper/55">
+                Our own teams cover Southern California. Outside that footprint we activate
+                vetted vendors by territory and trade, under the same documentation standard.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-7">
+            <Reveal delay={0.1}>
+              <ul className="border-t border-paper/20">
+                {territories.map((territory, i) => (
+                  <li
+                    key={territory}
+                    className="flex items-baseline justify-between gap-6 border-b border-paper/15 py-4"
+                  >
+                    <span className="flex items-baseline gap-5">
+                      <span className="eyebrow text-brass-light/70">0{i + 1}</span>
+                      <span className="text-[15px] text-paper/85">{territory}</span>
+                    </span>
+                    <span className="eyebrow text-paper/30">Open</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link href="/apply" className="btn btn-paper">
+                  Open application
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                </Link>
+                <a
+                  href="mailto:info@assetproperty.net?subject=Vendor%20network%20enquiry"
+                  className="btn btn-ghost-light"
+                >
+                  Ask a question
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CLOSING ============ */}
+      <section className="container-edge py-20 lg:py-24">
+        <div className="grid gap-8 border-t border-ink/15 pt-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="eyebrow text-muted">
+              <span className="text-brass">04</span>
+              <span className="mx-2 text-brass/60">/</span>
+              Next step
             </p>
-            <h2 className="font-display mt-4 text-3xl font-bold text-white sm:text-4xl">
-              Apply to the Network
+            <h2 className="display mt-5 text-[clamp(2.3rem,5vw,4.4rem)] text-ink">
+              Apply to the network.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm text-body/70">
-              All fields marked * are required. Applications are reviewed on a rolling basis
-              by our network managers.
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
+              Three steps, reviewed by a person. If your trade and territory fit, onboarding
+              usually completes within two weeks.
             </p>
           </div>
-          <VendorApplicationForm />
+          <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
+            <Link href="/apply" className="btn btn-ink w-full justify-between sm:w-auto">
+              Start application
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+            </Link>
+            <a
+              href="mailto:info@assetproperty.net"
+              className="btn btn-outline w-full justify-between sm:w-auto"
+            >
+              info@assetproperty.net
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+            </a>
+          </div>
         </div>
       </section>
-
-      <CTABanner
-        title="Already an approved vendor with an open order?"
-        subtitle="Email info@assetproperty.net with your order number and property address — our coordinator will respond within one business day."
-      />
     </>
   );
 }

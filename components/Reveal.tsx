@@ -1,53 +1,49 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { gsap, prefersReducedMotion } from '@/lib/gsap';
 
 /**
- * Light scroll-reveal wrapper: children fade/rise in the first time
- * they scroll into view. Pure CSS transition, no animation library.
+ * Scroll-triggered entrance for blocks of content. Animates once, and
+ * leaves markup fully visible when motion is reduced.
  */
 export default function Reveal({
   children,
   delay = 0,
+  y = 26,
   className = '',
 }: {
   children: React.ReactNode;
-  /** Stagger delay in ms (e.g. index * 80) */
   delay?: number;
+  y?: number;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || prefersReducedMotion()) return;
 
-    // Very old browsers: just show the content.
-    if (typeof IntersectionObserver === 'undefined') {
-      el.classList.add('reveal-visible');
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('reveal-visible');
-          observer.disconnect();
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        { autoAlpha: 0, y },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          delay,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true },
         }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
-    );
+      );
+    }, el);
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    return () => ctx.revert();
+  }, [delay, y]);
 
   return (
-    <div
-      ref={ref}
-      className={`reveal ${className}`}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );

@@ -4,30 +4,41 @@ const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        ink: '#0E0E11',
-        surface: '#18181C',
-        line: '#222228',
-        gold: {
-          DEFAULT: '#D4AF37',
-          light: '#E5C158',
-          dark: '#A9832A',
+        ink: {
+          DEFAULT: '#13140F',
+          soft: '#1C1D16',
         },
-        body: '#E4E4E7',
+        paper: {
+          DEFAULT: '#F2EFE6',
+          deep: '#E8E2D3',
+        },
+        stone: '#D7D1C1',
+        brass: {
+          DEFAULT: '#9C7A45',
+          light: '#C2A374',
+          dark: '#6E552F',
+        },
+        muted: '#6B6759',
+        rust: '#8E3B2C',
       },
       fontFamily: {
-        serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
-        sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
-      boxShadow: {
-        glow: '0 0 20px rgba(212,175,55,0.15)',
-        glowLg: '0 0 40px rgba(212,175,55,0.25)',
+      maxWidth: {
+        edge: '1680px',
       },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #E5C158 0%, #D4AF37 50%, #A9832A 100%)',
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+      borderRadius: {
+        none: '0',
       },
     },
   },

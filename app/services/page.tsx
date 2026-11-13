@@ -1,114 +1,133 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Camera, Check, ClipboardCheck, Hammer, LockKeyhole, Leaf, Snowflake, Truck } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
-import CTABanner from '@/components/CTABanner';
 import Reveal from '@/components/Reveal';
+import ParallaxImage from '@/components/motion/ParallaxImage';
+import ServiceNav from '@/components/ServiceNav';
+import CTABanner from '@/components/CTABanner';
 
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Comprehensive property preservation, inspection, securing, clean-out, winterization, lawn care, repairs and code compliance services.',
+    'Property preservation services from ASSET PROPERTY SOLUTION LLC: inspections, securing and lock changes, debris removal, grounds care, winterization, repairs and code compliance.',
   alternates: { canonical: '/services/' },
 };
 
 const services = [
   {
-    icon: ClipboardCheck,
+    slug: 'inspections',
     title: 'Property Inspections',
     intro:
-      'Detailed occupancy and property condition reporting that keeps lenders and servicers informed between work orders.',
+      'Occupancy and condition reporting that keeps lenders and servicers current between work orders.',
+    detail:
+      'Inspections follow the client’s checklist, not a generic template. Every visit captures occupancy, visible damage, utility status and safety hazards, with frames indexed to the room or elevation they describe.',
     features: [
-      'Occupancy inspections (verified vs. vacant)',
-      'Interior & exterior condition reports',
-      'Photo documentation of all findings',
-      'Mortgage & delinquency inspections',
+      'Occupancy inspections, occupied vs. vacant',
+      'Interior and exterior condition reports',
+      'Mortgage and delinquency inspections',
       'Utility and meter status verification',
+      'Photo documentation of all findings',
     ],
   },
   {
-    icon: LockKeyhole,
+    slug: 'securing',
     title: 'Securing & Lock Changes',
     intro:
-      'Vacant and distressed properties secured to code, with full re-key documentation for transfer and record purposes.',
+      'Vacant properties secured to code, with re-key documentation that stands up to transfer and review.',
+    detail:
+      'Securing is treated as a chain-of-custody exercise. Lock codes are recorded, keys are accounted for, and every opening is photographed before and after the work is completed.',
     features: [
-      'Re-keys and lock box installations',
-      'Padlock & hasp installations',
-      'Boarding of doors, windows & openings',
-      'Hazard identification & removal',
-      'Securing documentation with lock codes',
+      'Re-keys and lockbox installation',
+      'Padlock and hasp installation',
+      'Boarding of doors, windows and openings',
+      'Hazard identification and removal',
+      'Securing report with recorded lock codes',
     ],
   },
   {
-    icon: Truck,
+    slug: 'trash-out',
     title: 'Debris & Trash-Out',
     intro:
-      'Full-scale interior and exterior removal of debris, personal property and hazardous materials, always documented.',
+      'Full interior and exterior clear-outs of debris, personal property and hazardous material — documented throughout.',
+    detail:
+      'Personal property is handled to the governing guideline, not simply hauled. Disposal is receipted, hazardous items are separated, and the property is photographed empty so the next vendor starts from a clean record.',
     features: [
-      'Complete interior/exterior clean-outs',
-      'Debris & construction hauling',
+      'Complete interior and exterior clean-outs',
+      'Debris and construction hauling',
       'Personal property handling per guidelines',
       'Hazardous material identification',
-      'Disposal receipts & records retained',
+      'Disposal receipts and records retained',
     ],
   },
   {
-    icon: Leaf,
-    title: 'Lawn & Yard Care',
+    slug: 'grounds',
+    title: 'Lawn & Grounds Care',
     intro:
-      'Scheduled and recurring grounds maintenance that keeps every collateral asset presentable and market-ready.',
+      'Scheduled grounds maintenance that keeps every collateral asset presentable and compliant.',
+    detail:
+      'Grounds work is scheduled against the asset’s exposure, not a single cut. Overgrowth, sidewalk clearance and seasonal regrowth are tracked over time so the property is never photographed out of compliance.',
     features: [
-      'Recurring grass cuts (weekly / bi-weekly)',
-      'Overgrowth & brush removal',
-      'Tree & branch trimming',
-      'Edging, blow-down & weed control',
+      'Recurring cuts, weekly or bi-weekly',
+      'Overgrowth and brush removal',
+      'Tree and branch trimming',
+      'Edging, blow-down and weed control',
       'Seasonal clean-up programs',
     ],
   },
   {
-    icon: Snowflake,
+    slug: 'winterization',
     title: 'Winterization',
     intro:
-      'Plumbing systems protected against freeze damage using documented drain-down and anti-freeze procedures.',
+      'Plumbing protected against freeze damage using documented drain-down and anti-freeze procedures.',
+    detail:
+      'Systems are drained, fixtures and traps are treated, and tags are posted at the point of service. De-winterization and press testing are available when the asset returns to market.',
     features: [
       'Complete water system drain-downs',
-      'Anti-freeze application to fixtures & traps',
-      'Water heater & appliance draining',
-      'Inspection tags & placards posted',
-      'De-winterization & press testing available',
+      'Anti-freeze application to fixtures and traps',
+      'Water heater and appliance draining',
+      'Inspection tags and placards posted',
+      'De-winterization and press testing',
     ],
   },
   {
-    icon: Hammer,
+    slug: 'repairs',
     title: 'Repairs & Rehab',
     intro:
-      'Bid-supported repair and rehabilitation work executed by vetted trades to restore condition and code compliance.',
+      'Bid-supported repair and rehabilitation executed by vetted trades, sequenced around the asset’s timeline.',
+    detail:
+      'Repairs are scoped and priced line by line before work begins. Trades are sequenced so the property is never left open overnight, and each stage is photographed for the close-out package.',
     features: [
-      'Roofing, drywall & paint',
-      'Mold remediation & moisture control',
+      'Roofing, drywall and paint',
+      'Mold remediation and moisture control',
       'Code violation remediation',
-      'Occupancy / smoke & CO detector installs',
-      'Before/after photo reporting per scope',
+      'Smoke and CO detector installation',
+      'Before-and-after reporting per scope',
     ],
   },
 ];
 
 const extras = [
   {
-    title: 'Code Compliance Services',
+    title: 'Code Compliance',
+    intro:
+      'Violation notices received, scoped and resolved with the issuing agency — including re-inspection.',
     points: [
-      'Violation notices received & resolved',
-      'Permit pulls & inspector re-checks',
-      'City / county agency coordination',
-      'Compliance photo & letter documentation',
+      'Violation notices logged and resolved',
+      'Permit pulls and inspector re-checks',
+      'City and county agency coordination',
+      'Compliance photo and letter records',
     ],
   },
   {
-    title: 'Asset & Facility Maintenance',
+    title: 'Asset Maintenance',
+    intro:
+      'Recurring checks and upkeep for portfolios that need a steady field presence rather than one-off orders.',
     points: [
-      'Recurring property checks & walkthroughs',
-      'PM / NPN escalation coverage',
-      'Utility & seasonal readiness programs',
+      'Recurring property checks and walkthroughs',
+      'PM and NPN escalation coverage',
+      'Utility and seasonal readiness programs',
       'Line-item scope on every invoice',
     ],
   },
@@ -117,103 +136,152 @@ const extras = [
 export default function ServicesPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="grid-overlay absolute inset-0" aria-hidden />
-        <div
-          aria-hidden
-          className="glow-pulse absolute -top-24 left-1/2 h-72 w-[32rem] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl"
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8">
-          <p className="fade-up text-xs font-semibold tracking-[0.3em] text-gold uppercase">
-            Our Services
-          </p>
-          <h1
-            className="fade-up font-display mx-auto mt-5 max-w-3xl text-4xl font-bold text-white sm:text-5xl"
-            style={{ animationDelay: '120ms' }}
-          >
-            Full-Spectrum <span className="text-gold-gradient">Property Preservation</span>
-          </h1>
-          <p
-            className="fade-up mx-auto mt-6 max-w-2xl text-base leading-relaxed text-body/80"
-            style={{ animationDelay: '240ms' }}
-          >
-            Every service below is delivered with photo documentation, a line-item invoice and
-            a 24–48h dispatch window. <Camera className="inline h-4 w-4 text-gold" /> Detailed scope available on request.
-          </p>
+      <PageHero
+        index="02"
+        label="Capabilities"
+        titleLines={[
+          'Six disciplines.',
+          <>
+            One <span className="italic text-brass">standard</span>.
+          </>,
+        ]}
+        description="Every order is delivered with photo documentation, a line-item invoice and a confirmed dispatch window. The service changes; the reporting does not."
+        meta={[
+          { label: 'Dispatch', value: '24–48 hours' },
+          { label: 'Reporting', value: 'Same day close-out' },
+          { label: 'Coverage', value: 'Nationwide' },
+        ]}
+      />
+
+      {/* ============ IMAGE BREAK ============ */}
+      <section className="container-edge pb-16 lg:pb-24">
+        <Reveal>
+          <ParallaxImage
+            src="/images/hero-office.jpg"
+            alt="Commercial property maintained under a recurring field services program"
+            className="aspect-[16/10] w-full sm:aspect-[21/9]"
+            sizes="100vw"
+            objectPosition="center 60%"
+            strength={5}
+          />
+          <div className="mt-2 flex items-start justify-between gap-4">
+            <p className="eyebrow text-muted">
+              Above — Recurring perimeter program, South Los Angeles
+            </p>
+            <p className="eyebrow hidden text-muted sm:block">FIELD FILE 03</p>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ============ SERVICE DETAIL ============ */}
+      <section className="container-edge pb-20 lg:pb-28">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+          <aside className="lg:col-span-3">
+            <div className="lg:sticky lg:top-28">
+              <Reveal>
+                <p className="eyebrow mb-4 text-muted">Service index</p>
+                <ServiceNav items={services.map(({ slug, title }) => ({ slug, title }))} />
+                <div className="mt-8 border-t border-ink/15 pt-5">
+                  <p className="text-[12px] leading-relaxed text-muted">
+                    Work is priced from the order, not a rate card. Scope changes are
+                    documented and approved before proceeding.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="link-underline mt-4 inline-flex items-center gap-1.5 text-[13px] text-ink"
+                  >
+                    Request a quote
+                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </aside>
+
+          <div className="lg:col-span-9">
+            {services.map((service, i) => (
+              <article
+                key={service.slug}
+                id={service.slug}
+                className="scroll-mt-28 border-t border-ink/15 py-10 first:border-t-0 first:pt-0 lg:py-14"
+              >
+                <div className="grid gap-8 sm:grid-cols-12 sm:gap-6">
+                  <div className="sm:col-span-5">
+                    <p className="eyebrow text-brass">0{i + 1}</p>
+                    <h2 className="display mt-4 text-[clamp(1.8rem,3.2vw,2.6rem)] text-ink">
+                      {service.title}
+                    </h2>
+                    <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+                      {service.intro}
+                    </p>
+                  </div>
+
+                  <div className="sm:col-span-7">
+                    <p className="text-[15px] leading-relaxed text-ink/75">{service.detail}</p>
+                    <ul className="mt-8 grid gap-x-8 sm:grid-cols-2">
+                      {service.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-start gap-3 border-t border-ink/10 py-3 text-[13px] leading-relaxed text-ink/75"
+                        >
+                          <span className="mt-0.5 font-mono text-[10px] text-brass">+</span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Services detail */}
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <SectionHeading
-          align="left"
-          eyebrow="Service Lines"
-          title="Detailed Service Breakdown"
-          description="Six core service lines, each with a defined scope of work and reporting standard."
-        />
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          {services.map(({ icon: Icon, title, intro, features }, i) => (
-            <Reveal key={title} delay={(i % 2) * 100}>
-            <article
-              className="lift h-full rounded-lg border border-line bg-surface p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-glow"
-            >
-              <div className="flex items-start gap-5">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-gold/30 bg-gold/10">
-                  <Icon className="h-6 w-6 text-gold" />
-                </span>
-                <div>
-                  <h2 className="font-display text-xl font-semibold text-white">{title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-body/75">{intro}</p>
-                </div>
-              </div>
-              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-body/80">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </article>
-            </Reveal>
-          ))}
-        </div>
+      {/* ============ ADDITIONAL CAPABILITIES ============ */}
+      <section className="border-y border-ink/15 bg-paper-deep/50">
+        <div className="container-edge py-20 lg:py-28">
+          <SectionHeading
+            index="03"
+            eyebrow="Beyond the six"
+            title={
+              <>
+                Compliance and
+                <br />
+                <span className="italic text-brass">steady presence.</span>
+              </>
+            }
+            description="Two further programs for assets that need ongoing management rather than a single order."
+          />
 
-        {/* Additional capabilities */}
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          {extras.map((e, i) => (
-            <Reveal key={e.title} delay={i * 100}>
-            <div
-              className="lift h-full rounded-lg border border-gold/25 bg-gradient-to-b from-gold/5 to-transparent p-8"
-            >
-              <h3 className="font-display text-lg font-semibold text-gold">{e.title}</h3>
-              <ul className="mt-5 space-y-3">
-                {e.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-sm text-body/80">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            </Reveal>
-          ))}
+          <div className="mt-12 grid gap-10 border-t border-ink/15 pt-10 lg:grid-cols-2 lg:gap-16">
+            {extras.map((extra, i) => (
+              <Reveal key={extra.title} delay={i * 0.08}>
+                <p className="eyebrow text-brass">0{i + 1}</p>
+                <h3 className="display mt-4 text-[clamp(1.7rem,2.8vw,2.2rem)] text-ink">
+                  {extra.title}
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{extra.intro}</p>
+                <ul className="mt-7">
+                  {extra.points.map((point) => (
+                    <li
+                      key={point}
+                      className="border-t border-ink/10 py-3 text-[13px] text-ink/75"
+                    >
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       <CTABanner
-        title="Need a custom scope or nationwide work order?"
-        subtitle="Send us the details — we will confirm pricing, timeline and documentation requirements before any crew is dispatched."
+        title="Need a scope priced?"
+        subtitle="Send the property address and the requirement. We confirm pricing, timeline and documentation standards before any crew is dispatched."
+        label="Scope request"
       />
-      <div className="bg-ink py-12 text-center">
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-gold transition-colors hover:text-gold-light"
-        >
-          Go to Contact Form <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
     </>
   );
 }
