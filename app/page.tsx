@@ -181,7 +181,6 @@ export default function HomePage() {
                   sizes="(min-width: 1024px) 42vw, 100vw"
                   priority
                   strength={5}
-                  reveal={false}
                 />
                 <div className="mt-2 flex items-start justify-between gap-4">
                   <p className="eyebrow text-muted">

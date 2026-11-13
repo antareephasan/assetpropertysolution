@@ -60,14 +60,28 @@ export default function ParallaxImage({
       });
 
       if (reveal) {
+        // Wipe the frame open on a balanced ease so the reveal reads as a
+        // deliberate movement instead of snapping away in the first frames.
         gsap.fromTo(
           frame,
           { clipPath: 'inset(0% 0% 100% 0%)' },
           {
             clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.3,
-            ease: 'expo.out',
-            scrollTrigger: { trigger: frame, start: 'top 92%', once: true },
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: { trigger: frame, start: 'top 85%', once: true },
+          }
+        );
+
+        // Settle the photo in from a slight overscale as it opens.
+        gsap.fromTo(
+          img,
+          { scale: 1.28 },
+          {
+            scale: 1.18,
+            duration: 1.8,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: frame, start: 'top 85%', once: true },
           }
         );
       }
