@@ -41,7 +41,7 @@ export default function Logo({
           fill
           sizes="112px"
           priority
-          className="object-cover scale-[1.10] translate-y-[2px] transition-transform duration-700 ease-out-expo group-hover:scale-[1.15]"
+          className="object-cover translate-y-[2px] transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]"
         />
       </span>
       <span className="flex flex-col leading-none">
